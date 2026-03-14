@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Say No to Measure A | Contra Costa County June 2026</title>
+  <meta name="description" content="Measure A would lock Contra Costa County into a 25-year urban straitjacket, making the housing crisis worse for working families, teachers, nurses, and young adults." />
+  <!-- Favicon: crossed-out "A" -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23c0170f'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2C serif' font-weight='900' font-size='21' fill='white'%3EA%3C/text%3E%3Cline x1='5' y1='27' x2='27' y2='5' stroke='white' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red:    #c0170f;
+      --red-dk: #8f0f09;
+      --black:  #111111;
+      --off-white: #f8f5f0;
+      --warm-gray: #e8e3db;
+      --mid-gray: #7a7470;
+      --rule: 2px solid var(--black);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--off-white);
+      color: var(--black);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    /* ─── UTILITY ─────────────────────────────────────── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .rule-top    { border-top:    var(--rule); }
+    .rule-bottom { border-bottom: var(--rule); }
+    .mono {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      background: var(--black);
+      color: #fff;
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-brand span { color: var(--red); }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    nav ul a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    nav ul a:hover { color: #fff; }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    header {
+      background: var(--black);
+      color: #fff;
+      padding: 72px 24px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 39px,
+        rgba(255,255,255,0.035) 39px,
+        rgba(255,255,255,0.035) 40px
+      );
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .hero-no {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 18vw, 10rem);
+      line-height: 1;
+      padding: 0 24px 8px;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+      position: relative;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+    .hero-date {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 8px 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ─── BANNER STRIP ─────────────────────────────────── */
+    .banner-strip {
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 14px 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+    .banner-strip strong { font-style: normal; font-weight: 900; }
+
+    /* ─── INTRO SECTION ───────────────────────────────── */
+    .intro {
+      padding: 64px 0 48px;
+      border-bottom: var(--rule);
+    }
+    .intro p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .intro p + p { margin-top: 20px; }
+
+    /* ─── STAT ROW ─────────────────────────────────────── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      border-bottom: var(--rule);
+    }
+    .stat-box {
+      padding: 40px 28px;
+      border-right: var(--rule);
+      text-align: center;
+    }
+    .stat-box:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      color: var(--red);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-top: 10px;
+      display: block;
+    }
+    .stat-note {
+      font-size: 0.88rem;
+      color: var(--mid-gray);
+      margin-top: 8px;
+    }
+
+    /* ─── ARGUMENTS SECTION ───────────────────────────── */
+    section.arguments {
+      padding: 72px 0;
+      border-bottom: var(--rule);
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--warm-gray);
+    }
+    .arg-list { display: flex; flex-direction: column; gap: 0; }
+    .arg-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 28px;
+      padding: 40px 0;
+      border-top: 1px solid var(--warm-gray);
+    }
+    .arg-item:first-child { border-top: none; }
+    .arg-num {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 3rem;
+      color: var(--warm-gray);
+      line-height: 1;
+      padding-top: 4px;
+      text-align: right;
+    }
+    .arg-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .arg-body p { font-size: 0.97rem; color: #333; }
+
+    /* ─── PULL QUOTE ───────────────────────────────────── */
+    .pull-quote {
+      background: var(--black);
+      color: #fff;
+      padding: 56px 40px;
+      text-align: center;
+      border-top: var(--rule);
+      border-bottom: var(--rule);
+    }
+    .pull-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      line-height: 1.4;
+      max-width: 680px;
+      margin: 0 auto;
+      letter-spacing: -0.01em;
+    }
+    .pull-quote blockquote em { color: var(--red); font-style: normal; }
+
+    /* ─── BETTER WAY SECTION ───────────────────────────── */
+    section.better {
+      padding: 72px 0;
+      border-bottom: var(--rule);
+    }
+    .better h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .better p { font-size: 0.97rem; color: #333; margin-bottom: 16px; }
+    .better-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .better-card {
+      background: #fff;
+      border: 1.5px solid var(--warm-gray);
+      padding: 28px 24px;
+      border-top: 4px solid var(--black);
+    }
+    .better-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .better-card p { font-size: 0.9rem; color: #555; margin-bottom: 0; }
+
+    /* ─── VOLUNTEER SECTION ────────────────────────────── */
+    section.volunteer {
+      padding: 72px 0;
+      border-bottom: var(--rule);
+    }
+    .vol-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .vol-copy h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .vol-copy p { font-size: 0.97rem; color: #333; margin-bottom: 14px; }
+    .vol-ways {
+      list-style: none;
+      margin-top: 20px;
+    }
+    .vol-ways li {
+      padding: 10px 0;
+      border-top: 1px solid var(--warm-gray);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .vol-ways li::before {
+      content: '→';
+      color: var(--red);
+      font-size: 1rem;
+    }
+    .vol-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .form-row { margin-bottom: 16px; }
+    .form-row label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 6px;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--warm-gray);
+      background: #fff;
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.15s;
+      appearance: none;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--black);
+    }
+    .form-row textarea { min-height: 90px; resize: vertical; }
+    .btn-submit {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.15s;
+    }
+    .btn-submit:hover { background: var(--red-dk); }
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--mid-gray);
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+    footer strong { color: rgba(255,255,255,0.9); }
+    footer p + p { margin-top: 8px; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 640px) {
+      .stat-box { border-right: none; border-bottom: var(--rule); }
+      .stat-box:last-child { border-bottom: none; }
+      .arg-item { grid-template-columns: 1fr; gap: 8px; }
+      .arg-num { font-size: 1.6rem; text-align: left; }
+      .vol-inner { grid-template-columns: 1fr; }
+      .pull-quote { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#top" class="nav-brand"><span>NO</span> on Measure A</a>
+    <ul>
+      <li><a href="#facts">The Facts</a></li>
+      <li><a href="#reasons">Why No</a></li>
+      <li><a href="#better">A Better Way</a></li>
+      <li><a href="#volunteer">Volunteer</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top">
+    <div class="hero-eyebrow">Contra Costa County · June 2, 2026 Primary Election</div>
+    <div class="hero-no">NO</div>
+    <h1 class="hero-title">on Measure A — the Urban Limit Line</h1>
+    <p class="hero-sub">A 25-year straitjacket that worsens the housing crisis, strips property rights, and ties the hands of elected officials.</p>
+    <div class="hero-date">Election Day: June 2, 2026</div>
+  </header>
+
+  <!-- BANNER -->
+  <div class="banner-strip">
+    <strong>Protecting open space is a worthy goal.</strong> A 25-year lock that prices out families is not the answer.
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="container">
+      <p>Contra Costa County has a housing crisis. Home prices and rents have risen far beyond what working families, teachers, nurses, and young adults can afford. <strong>Measure A would make that shortage worse for the next 25 years.</strong></p>
+      <p>Proponents call this an "extension" of the Urban Limit Line. It is not. Measure A removes an additional 9,460 acres from any possible urban housing use through 2051 — while locking elected officials out of any meaningful ability to respond.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats" id="facts">
+    <div class="stat-box">
+      <span class="stat-num">9,460</span>
+      <span class="stat-label">Acres Removed</span>
+      <p class="stat-note">Additional acres stripped of any urban housing use through 2051</p>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">14.78</span>
+      <span class="stat-label">Square Miles</span>
+      <p class="stat-note">Larger than 10 of the 19 cities in Contra Costa County</p>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">25</span>
+      <span class="stat-label">Years Locked In</span>
+      <p class="stat-note">No meaningful flexibility for housing needs until at least 2051</p>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">30</span>
+      <span class="stat-label">Acre Threshold</span>
+      <p class="stat-note">Any adjustment over 30 acres requires a return to the ballot — even in a crisis</p>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <blockquote>
+      "When Contra Costa restricts its land supply, <em>families don't disappear.</em> They move — and commute back."
+    </blockquote>
+  </div>
+
+  <!-- ARGUMENTS -->
+  <section class="arguments" id="reasons">
+    <div class="container">
+      <div class="section-label">Five Reasons to Vote No</div>
+      <div class="arg-list">
+
+        <div class="arg-item">
+          <div class="arg-num">1</div>
+          <div class="arg-body">
+            <h3>It's Not an "Extension" — It's an Expansion of Restrictions</h3>
+            <p>Measure A removes an additional 9,460 acres — equivalent to 14.78 square miles — from any possible urban housing use through 2051. That is larger than 10 of the 19 cities in Contra Costa County. Calling this a routine renewal misleads voters about what is actually on the ballot.</p>
+          </div>
+        </div>
+
+        <div class="arg-item">
+          <div class="arg-num">2</div>
+          <div class="arg-body">
+            <h3>It Worsens an Existing Housing Crisis</h3>
+            <p>The Bay Area's housing shortage is well-documented. Contra Costa County families — teachers, nurses, firefighters, young adults — are already priced out of homeownership. Measure A locks this land supply restriction in place for a generation, guaranteeing that the shortage deepens. Families do not disappear when housing is unavailable; they move farther away and commute back, worsening traffic, air quality, and quality of life.</p>
+          </div>
+        </div>
+
+        <div class="arg-item">
+          <div class="arg-num">3</div>
+          <div class="arg-body">
+            <h3>It Strips Property Rights From East County Residents</h3>
+            <p>In Byron and other East County communities, the redrawn boundary pulls land currently outside the Urban Limit Line into a new restricted zone. Longtime residents and family farmers lose development rights and property value without recourse. This is not conservation through voluntary agreement — it is a taking by ballot measure.</p>
+          </div>
+        </div>
+
+        <div class="arg-item">
+          <div class="arg-num">4</div>
+          <div class="arg-body">
+            <h3>It Removes Flexibility for 25 Years</h3>
+            <p>Any boundary adjustment over 30 acres requires a four-fifths Board vote <em>and</em> another countywide election. Housing needs shift. Economic opportunities emerge. Infrastructure plans evolve. Measure A ensures that elected officials are powerless to respond to any of those changes for a quarter century. That is not smart planning — it is governance by paralysis.</p>
+          </div>
+        </div>
+
+        <div class="arg-item">
+          <div class="arg-num">5</div>
+          <div class="arg-body">
+            <h3>It Contradicts State Housing Law</h3>
+            <p>California has spent years overriding local zoning because counties like Contra Costa have restricted housing for too long. State law — including the Housing Accountability Act and builder's remedy — continues to erode local control precisely because jurisdictions have failed to meet housing needs. Measure A responds by locking restrictions even tighter for a quarter century, guaranteeing further state preemption and pricing out the next generation of County residents.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BETTER WAY -->
+  <section class="better" id="better">
+    <div class="container">
+      <div class="section-label">A Better Approach</div>
+      <h2>Protect Open Space Without a 25-Year Straitjacket</h2>
+      <p>Open space preservation is a legitimate and shared goal. But Measure A uses a blunt boundary that worsens affordability, displaces families, and prevents responsive elected representation. There are smarter tools available.</p>
+      <div class="better-grid">
+        <div class="better-card">
+          <h4>Conservation Easements</h4>
+          <p>Targeted, voluntary agreements with willing landowners that permanently protect agricultural and open space lands without removing private property rights by ballot measure.</p>
+        </div>
+        <div class="better-card">
+          <h4>Willing-Seller Purchases</h4>
+          <p>Direct county or land-trust acquisition of priority parcels offers real, permanent protection — not a bureaucratic boundary line that drives up housing costs countywide.</p>
+        </div>
+        <div class="better-card">
+          <h4>General &amp; Specific Plans</h4>
+          <p>Updated general and specific plans can direct growth intelligently, protecting sensitive lands while preserving the flexibility to address changing housing needs without a countywide vote.</p>
+        </div>
+        <div class="better-card">
+          <h4>State &amp; Regional Coordination</h4>
+          <p>Working with ABAG, MTC, and state housing agencies to align Contra Costa's growth patterns with regional needs — rather than fighting a losing battle that invites state preemption.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER -->
+  <section class="volunteer" id="volunteer">
+    <div class="container">
+      <div class="vol-inner">
+        <div class="vol-copy">
+          <div class="section-label">Get Involved</div>
+          <h2>Help Defeat Measure A</h2>
+          <p>The No campaign needs volunteers across Contra Costa County — from Brentwood to Richmond, Danville to Pittsburg. Every conversation, every door knocked, every sign posted makes a difference.</p>
+          <p>We are especially looking for voices from East County communities directly affected by the redrawn boundary.</p>
+          <ul class="vol-ways">
+            <li>Write letters to local newspapers</li>
+            <li>Attend community meetings</li>
+            <li>Share facts on social media</li>
+            <li>Host a neighborhood conversation</li>
+            <li>Post yard signs</li>
+            <li>Help with canvassing</li>
+          </ul>
+        </div>
+        <div class="vol-form">
+          <h3>Contact the Campaign</h3>
+          <div class="form-row">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Jane Smith" />
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="jane@example.com" />
+          </div>
+          <div class="form-row">
+            <label>City</label>
+            <input type="text" name="city" placeholder="Walnut Creek, Antioch, etc." />
+          </div>
+          <div class="form-row">
+            <label>How would you like to help?</label>
+            <select name="role">
+              <option value="">Choose one</option>
+              <option>Write Letters / Op-Eds</option>
+              <option>Social Media</option>
+              <option>Canvassing / Knocking Doors</option>
+              <option>Host a Neighborhood Meeting</option>
+              <option>Post Signs</option>
+              <option>General Volunteer</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Message (optional)</label>
+            <textarea name="message" placeholder="Tell us about yourself or ask a question…"></textarea>
+          </div>
+          <button class="btn-submit" onclick="openMailto()">Volunteer Now</button>
+          <p class="form-note">Clicking opens your mail app with your details pre-filled. You can review before sending.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>SayNoToMeasureA.com</strong></p>
+    <p>Public information page for Contra Costa County voters.</p>
+    <p style="margin-top:16px;">
+      Also see: <a href="https://StopMeasureB.com" target="_blank" rel="noopener">StopMeasureB.com</a>
+    </p>
+    <p style="margin-top:16px; font-size:0.75rem;">
+      Paid for by the Committee to Oppose Measure A · Contra Costa County, California<br />
+      Election Day: June 2, 2026
+    </p>
+  </footer>
+
+  <script>
+    function openMailto() {
+      const name    = document.querySelector('[name="name"]').value.trim();
+      const email   = document.querySelector('[name="email"]').value.trim();
+      const city    = document.querySelector('[name="city"]').value.trim();
+      const role    = document.querySelector('[name="role"]').value;
+      const message = document.querySelector('[name="message"]').value.trim();
+
+      if (!name || !email) {
+        alert('Please enter your name and email before submitting.');
+        return;
+      }
+
+      const body = [
+        `Name: ${name}`,
+        `City: ${city || '(not provided)'}`,
+        `How I'd like to help: ${role || '(not specified)'}`,
+        message ? `\nMessage:\n${message}` : ''
+      ].join('\n');
+
+      const subject = encodeURIComponent('No on Measure A — Volunteer Sign-Up');
+      const bodyEnc = encodeURIComponent(body);
+      window.location.href = `mailto:info@saynomeasurea.com?subject=${subject}&body=${bodyEnc}`;
+    }
+
+    // Smooth active-link highlight on scroll (optional enhancement)
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('nav ul a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current
+          ? '#fff' : 'rgba(255,255,255,0.78)';
+      });
+    });
+  </script>
+
+</body>
+</html>

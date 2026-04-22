@@ -89,6 +89,11 @@
       transition: color 0.15s;
     }
     nav ul a:hover { color: #fff; }
+    nav ul a.nav-event {
+      color: var(--red);
+      font-weight: 500;
+    }
+    nav ul a.nav-event:hover { color: #fff; }
 
     /* ─── HERO ─────────────────────────────────────────── */
     header {
@@ -171,6 +176,153 @@
       letter-spacing: 0.01em;
     }
     .banner-strip strong { font-style: normal; font-weight: 900; }
+
+    /* ─── EVENT BLOCK ─────────────────────────────────── */
+    .event-block {
+      background: var(--black);
+      color: #fff;
+      padding: 56px 24px 60px;
+      border-bottom: var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .event-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        rgba(192,23,15,0.07) 60px,
+        rgba(192,23,15,0.07) 61px
+      );
+      pointer-events: none;
+    }
+    .event-block .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .event-eyebrow {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      margin-bottom: 22px;
+    }
+    .event-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0 auto 16px;
+      max-width: 720px;
+      color: #fff;
+    }
+    .event-sub {
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 620px;
+      margin: 0 auto 30px;
+    }
+    .event-details {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .event-detail-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .event-detail-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .event-detail-value {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: #fff;
+    }
+    .event-speakers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      max-width: 820px;
+      margin: 0 auto 34px;
+    }
+    .speaker {
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .speaker:hover {
+      border-color: var(--red);
+      background: rgba(192,23,15,0.06);
+    }
+    .speaker-role-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .speaker-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #fff;
+      line-height: 1.15;
+    }
+    .speaker-affil {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    .event-cta {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.86rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px 38px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .event-cta:hover {
+      background: var(--red-dk);
+      transform: translateY(-1px);
+    }
+    .event-cta-note {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
 
     /* ─── INTRO SECTION ───────────────────────────────── */
     .intro {
@@ -442,6 +594,8 @@
       .arg-num { font-size: 1.6rem; text-align: left; }
       .vol-inner { grid-template-columns: 1fr; }
       .pull-quote { padding: 40px 24px; }
+      .event-details { gap: 24px; }
+      .event-speakers { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -451,6 +605,7 @@
   <nav>
     <a href="#top" class="nav-brand"><span>NO</span> on Measure A</a>
     <ul>
+      <li><a href="#event" class="nav-event">Event May 5</a></li>
       <li><a href="#facts">The Facts</a></li>
       <li><a href="#reasons">Why No</a></li>
       <li><a href="#better">A Better Way</a></li>
@@ -471,6 +626,56 @@
   <div class="banner-strip">
     <strong>Protecting open space is a worthy goal.</strong> A 25-year lock that prices out families is not the answer.
   </div>
+
+  <!-- EVENT BLOCK -->
+  <section class="event-block" id="event">
+    <div class="container">
+      <span class="event-eyebrow">Free Online Event · Two Weeks Before the Vote</span>
+      <h2 class="event-title">Is the Urban Limit Line Right for Contra Costa County?</h2>
+      <p class="event-sub">Four leading voices on land use, housing, and environmental law weigh in on what Measure A would actually do — and what a smarter approach could look like.</p>
+
+      <div class="event-details">
+        <div class="event-detail-item">
+          <span class="event-detail-label">When</span>
+          <span class="event-detail-value">Tue · May 5 · 7:00 PM PT</span>
+        </div>
+        <div class="event-detail-item">
+          <span class="event-detail-label">Where</span>
+          <span class="event-detail-value">Online via Zoom</span>
+        </div>
+        <div class="event-detail-item">
+          <span class="event-detail-label">Cost</span>
+          <span class="event-detail-value">Free &amp; Open to All</span>
+        </div>
+      </div>
+
+      <div class="event-speakers">
+        <div class="speaker">
+          <span class="speaker-role-tag">Moderator</span>
+          <span class="speaker-name">Steven Greenhut</span>
+          <span class="speaker-affil">Pacific Research Institute</span>
+        </div>
+        <div class="speaker">
+          <span class="speaker-role-tag">Panelist</span>
+          <span class="speaker-name">Randal O'Toole</span>
+          <span class="speaker-affil">Thoreau Institute · Cato</span>
+        </div>
+        <div class="speaker">
+          <span class="speaker-role-tag">Panelist</span>
+          <span class="speaker-name">Jennifer Hernandez</span>
+          <span class="speaker-affil">Holland &amp; Knight</span>
+        </div>
+        <div class="speaker">
+          <span class="speaker-role-tag">Panelist</span>
+          <span class="speaker-name">Tara Sullivan</span>
+          <span class="speaker-affil">Holland &amp; Knight</span>
+        </div>
+      </div>
+
+      <a href="https://us06web.zoom.us/j/87497361820?pwd=QvOAgYbNvp03yDZzaXNjI3ueLAaKHd.1" class="event-cta" target="_blank" rel="noopener">Join on Zoom →</a>
+      <span class="event-cta-note">No registration required · Click the link at 7:00 PM Pacific on May 5</span>
+    </div>
+  </section>
 
   <!-- INTRO -->
   <section class="intro">
